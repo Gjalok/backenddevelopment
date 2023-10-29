@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Quiz;
 
 class QuizController extends Controller
 {
@@ -33,6 +34,19 @@ class QuizController extends Controller
         ];
 
         return view('quizzes.show', compact('quizDetails'));
+    }
+    public function createOrUpdate(Request $request, $id = null)
+    {
+        $quiz = $id ? Quiz::find($id) : new Quiz();
+
+        if ($request->isMethod('post')) {
+            $quiz->title = $request->input('title');
+            $quiz->description = $request->input('description');
+            $quiz->save();
+            return redirect()->route('quiz.list');
+        }
+
+        return view('quiz.form', ['quiz' => $quiz]);
     }
 }
 

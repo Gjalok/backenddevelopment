@@ -15,3 +15,11 @@ Route::get('/quizzes/{quizId}', [QuizController::class, 'show'])->name('quiz.sho
 Route::get('/', [QuizController::class, 'index']);
 
 
+Route::get('/quiz', 'QuizController@createOrUpdate')->name('quiz.create');  
+
+Route::get('/quiz/{id}', 'QuizController@createOrUpdate')->name('quiz.edit');  
+
+Route::post('/quiz/{id?}', 'QuizController@createOrUpdate');
+
+Route::get('/quiz/list', 'QuizController@list')->name('quiz.list');
+

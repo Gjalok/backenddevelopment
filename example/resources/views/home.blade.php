@@ -21,7 +21,11 @@
                 
                 <!-- Link to Quiz Page -->
                 <a href="{{ route('quiz.show', ['quizId' => $loop->index + 1]) }}" class="btn btn-primary">Take Quiz</a>
+                <a href="{{ route('quiz.create') }}" class="btn btn-primary">Create Quiz</a>
+                
+                
             </div>
         </div>
     @endforeach
 @endsection
+
