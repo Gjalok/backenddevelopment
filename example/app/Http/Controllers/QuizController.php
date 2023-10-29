@@ -46,7 +46,7 @@ class QuizController extends Controller
             return redirect()->route('quiz.list');
         }
 
-        return view('quiz.form', ['quiz' => $quiz]);
+        return view('quizzes.form', ['quiz' => $quiz]);
     }
 }
 
