@@ -9,12 +9,17 @@ class QuizController extends Controller
 {
     public function index()
     {
-        $quizzes = [
-            ['name' => 'Quiz 1', 'photo' => 'https://53.fs1.hubspotusercontent-na1.net/hub/53/hubfs/google-quiz.jpg?width=595&height=400&name=google-quiz.jpg', 'status' => true],
-            // Add more quizzes as needed
-        ];
-
+        $quizzes = Quiz::where('status', 'active')
+        ->whereNotNull('photo') 
+        ->where('photo', '!=', '')
+        ->take(8)
+        ->get(['title', 'description', 'photo', 'status']);
+        
         return view('home', compact('quizzes'));
+       
+
+
+       
     }
 
     // Add the subscribe method if not already present
