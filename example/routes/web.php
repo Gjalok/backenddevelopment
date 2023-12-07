@@ -23,3 +23,11 @@ Route::post('/quiz/{id?}', [QuizController::class,'createOrUpdate']);
 
 Route::get('/quiz/list', 'QuizController@list')->name('quiz.list');
 
+
+
+Route::get('/error', [QuizController::class, 'index'])->name('error.page');
+
+Route::middleware('mysuper')->group(function () {
+    Route::get('/your/route', [YourController::class, 'yourMethod']);
+    
+});
